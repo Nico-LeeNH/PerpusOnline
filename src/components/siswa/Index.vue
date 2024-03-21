@@ -50,7 +50,7 @@
                             <router-link
                               class="btn btn-success"
                               :to="{
-                                name: 'detailsiswa',
+                                name: 'Detail',
                                 params: { id: s.id },
                               }"
                             >
@@ -58,7 +58,7 @@
                             </router-link>
                             <router-link
                               class="btn btn-warning"
-                              :to="{ name: 'editsiswa', params: { id: s.id } }"
+                              :to="{ name: 'Edit', params: { id: s.id } }"
                             >
                               Edit
                             </router-link>

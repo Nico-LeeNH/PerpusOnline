@@ -85,12 +85,12 @@ export default {
         }
     },
     created(){
-        this.axios.get(`http://localhost:8000/api/siswa/${this.$route.params.id}`)
+        this.axios.get(`http://localhost:8000/api/getsiswa/${this.$route.params.id}`)
                  .then((res) => {
                       this.siswa = res.data
                   })
                   .catch(err => console.log(err));
-this.axios.get('http://localhost:8000/api/kelas')
+this.axios.get('http://localhost:8000/api/getkelas')
                   .then( res => {
                       this.kelas = res.data
                   })
@@ -98,7 +98,7 @@ this.axios.get('http://localhost:8000/api/kelas')
     },
     methods:{
         edit() {
-            this.axios.patch(`http://localhost:8000/api/siswa/${this.$route.params.id}`, this.siswa)
+            this.axios.patch(`http://localhost:8000/api/updatesiswa/${this.$route.params.id}`, this.siswa)
                       .then( () => {
                           this.$router.push('/siswa');
                       })

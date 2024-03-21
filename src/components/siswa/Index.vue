@@ -94,14 +94,14 @@ export default {
     };
   },
   created() {
-    // eslint-disable-next-line no-unused-vars
+    
     axios.get("http://localhost:8000/api/getsiswa").then((res) => {
       this.siswa = res.data;
     });
   },
   methods: {
     hapus(id) {
-      axios.delete("http://localhost:8000/api/siswa/${id}").then(() => {
+      axios.delete(`http://localhost:8000/api/deletesiswa/${id}`).then(() => {
         let i = this.siswa.map((item) => item.id).indexOf(id);
         this.siswa.splice(i, 1);
       });

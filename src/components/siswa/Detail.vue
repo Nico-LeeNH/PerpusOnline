@@ -21,19 +21,26 @@
                                     <h4 class="m-0">Detail Anggota</h4>
                                 </div>
                                 <div class="card-body text-justify">
+                                    <h6>Nama</h6>
                                     <h5 class="mb-3">{{siswa.nama_siswa}}</h5>
 
                                     <h6>Tanggal Lahir</h6>
-                                    <p class="card-text">{{siswa.tgl_lahir}}</p>
+                                    <p class="card-text">{{siswa.tanggal_lahir}}</p>
 
-                                    <h6>Jenis Kelamin</h6>
-                                    <p class="card-text">{{siswa.jk}}</p>
+                                    <h6>Gender</h6>
+                                    <p class="card-text">{{siswa.gender}}</p>
 
                                     <h6>Alamat</h6>
                                     <p class="card-text">{{siswa.alamat}}</p>
 
+                                    <h6>Username</h6>
+                                    <p class="card-text">{{siswa.username}}</p>
+                                    
+                                    <h6>Password</h6>
+                                    <p class="card-text">{{siswa.password}}</p>
+
                                     <h6>Kelas</h6>
-                                    <p class="card-text">{{siswa.nama_kelas}}</p>
+                                    <p class="card-text">{{siswa.id_kelas}}</p>
 
                                     <router-link class="btn btn-primary" to="/siswa">Kembali</router-link>
                                 </div>
@@ -47,6 +54,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'DetailKu',
     data(){
@@ -55,11 +63,14 @@ export default {
         }
     },
     created(){
-        this.axios.get(`http://localhost:8000/api/getsiswa/${this.$route.params.id}`)
-                  .then(res => {
+        axios.get(`http://localhost:8000/api/getsiswaid/${this.$route.params.id}`)
+                  .then((res) => {
                       this.siswa = res.data
+                      console.log(this.siswa)
+                      
                   })
                   .catch(err => console.log(err))
+                  
     }
 }
 </script>

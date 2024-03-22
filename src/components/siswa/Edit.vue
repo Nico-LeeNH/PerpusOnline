@@ -28,8 +28,16 @@
                                             <input type="text" class="form-control" v-model="siswa.nama_siswa">
                                         </div>                                        
                                         <div class="form-group">
+                                            <label>username</label>
+                                            <input type="text" class="form-control" v-model="siswa.username">
+                                        </div>                                        
+                                        <div class="form-group">
+                                            <label>password</label>
+                                            <input type="text" class="form-control" v-model="siswa.password">
+                                        </div>                                        
+                                        <div class="form-group">
                                             <label>Tanggal Lahir</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="siswa.tgl_lahir"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="siswa.tanggal_lahir"></b-form-datepicker>
                                         </div>
                                         <div class="form-group">
                                             <div>
@@ -37,16 +45,16 @@
                                             </div>
                                             <div class="btn-group btn-group-toggle" data-toggle="buttons">                                                
                                                 <label v-if="siswa.jk == 'L'" class="btn btn-secondary active">
-                                                    <input type="radio" value="L" v-model="siswa.jk" checked> Laki-laki                                                   
+                                                    <input type="radio" value="L" v-model="siswa.gender" checked> Laki-laki                                                   
                                                 </label>
                                                 <label v-else class="btn btn-secondary">
-                                                    <input type="radio" value="L" v-model="siswa.jk"> Laki-laki                                                    
+                                                    <input type="radio" value="L" v-model="siswa.gender"> Laki-laki                                                    
                                                 </label>
                                                 <label v-if="siswa.jk == 'P' " class="btn btn-secondary active">
-                                                    <input type="radio" value="P" v-model="siswa.jk" checked> Perempuan                                                    
+                                                    <input type="radio" value="P" v-model="siswa.gender" checked> Perempuan                                                    
                                                 </label>
                                                 <label v-else class="btn btn-secondary">
-                                                    <input type="radio" value="P" v-model="siswa.jk"> Perempuan                                                    
+                                                    <input type="radio" value="P" v-model="siswa.gender"> Perempuan                                                    
                                                 </label>
                                                 
                                             </div>
@@ -58,7 +66,7 @@
                                         <div class="form-group">
                                             <label>Kelas</label>
                                             <select class="form-control" v-model="siswa.id_kelas">                                                   
-                                                <option v-for="k in kelas" :key="k.id" :value="k.id" >{{ k.nama_kelas }}</option>
+                                                <option v-for="k in kelas" :key="k.id_kelas" :value="k.id_kelas" >{{ k.nama_kelas }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -76,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: 'EditKu',
     data(){
@@ -85,12 +94,12 @@ export default {
         }
     },
     created(){
-        this.axios.get(`http://localhost:8000/api/getsiswa/${this.$route.params.id}`)
+        axios.get(`http://localhost:8000/api/getsiswaid/${this.$route.params.id}`)
                  .then((res) => {
                       this.siswa = res.data
                   })
                   .catch(err => console.log(err));
-this.axios.get('http://localhost:8000/api/getkelas')
+axios.get('http://localhost:8000/api/getkelas')
                   .then( res => {
                       this.kelas = res.data
                   })
@@ -98,8 +107,9 @@ this.axios.get('http://localhost:8000/api/getkelas')
     },
     methods:{
         edit() {
-            this.axios.patch(`http://localhost:8000/api/updatesiswa/${this.$route.params.id}`, this.siswa)
+            axios.patch(`http://localhost:8000/api/updatesiswa/${this.$route.params.id}`, this.siswa)
                       .then( () => {
+                        console.log(this.siswa);
                           this.$router.push('/siswa');
                       })
                       .catch( err => console.log(err))

@@ -28,8 +28,16 @@
                                             <input type="text" class="form-control" v-model="siswa.nama_siswa">
                                         </div>                                        
                                         <div class="form-group">
+                                            <label>Username</label>
+                                            <input type="text" class="form-control" v-model="siswa.username">
+                                        </div>                                        
+                                        <div class="form-group">
+                                            <label>password</label>
+                                            <input type="text" class="form-control" v-model="siswa.password">
+                                        </div>                                        
+                                        <div class="form-group">
                                             <label>Tanggal Lahir</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="siswa.tgl_lahir"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="siswa.tanggal_lahir"></b-form-datepicker>
                                         </div>
                                         <div class="form-group">
                                             <div>
@@ -37,10 +45,10 @@
                                             </div>
                                             <div class="btn-group btn-group-toggle" data-toggle="buttons">                                                
                                                 <label class="btn btn-secondary">
-                                                    <input type="radio" value="L" v-model="siswa.jk"> Laki-laki
+                                                    <input type="radio" value="L" v-model="siswa.gender"> Laki-laki
                                                 </label>
                                                 <label class="btn btn-secondary">
-                                                    <input type="radio" value="P" v-model="siswa.jk"> Perempuan
+                                                    <input type="radio" value="P" v-model="siswa.gender"> Perempuan
                                                 </label>
                                             </div>
                                         </div>
@@ -51,7 +59,7 @@
                                         <div class="form-group">
                                             <label>Kelas</label>
                                             <select class="form-control" v-model="siswa.id_kelas">                                                   
-                                                <option v-for="k in kelas" :key="k.id" :value="k.id" >{{ k.nama_kelas }}</option>
+                                                <option v-for="k in kelas" :key="k.id_kelas" :value="k.id_kelas" >{{ k.nama_kelas }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -69,24 +77,24 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
     name:'TambahKu',
     data(){
         return{
             siswa:{},
-            kelas:{}
+            kelas:{},
         }
     },
     created(){
-        this.axios.get('http://localhost:8000/api/kelas')
+        axios.get('http://localhost:8000/api/getkelas')
                   .then( res => {
                       this.kelas = res.data
                   })
     },
     methods:{
         tambah() {
-            this.axios.post('http://localhost:8000/api/siswa', this.siswa)
+            axios.post('http://localhost:8000/api/addsiswa', this.siswa)
                       .then( () => {
                           this.$router.push('/siswa');
                       })

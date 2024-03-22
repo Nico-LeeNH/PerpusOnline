@@ -51,20 +51,20 @@
                               class="btn btn-success"
                               :to="{
                                 name: 'Detail',
-                                params: { id: s.id },
+                                params: { id: s.id_siswa },
                               }"
                             >
                               detail
                             </router-link>
                             <router-link
                               class="btn btn-warning"
-                              :to="{ name: 'Edit', params: { id: s.id } }"
+                              :to="{ name: 'Edit', params: { id: s.id_siswa } }"
                             >
                               Edit
                             </router-link>
                             <button
                               type="button"
-                              @click="hapus(s.id)"
+                              @click="hapus(s.id_siswa)"
                               class="btn btn-danger"
                             >
                               hapus
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
   name: "IndexKu",
   data() {
@@ -97,6 +97,7 @@ export default {
     
     axios.get("http://localhost:8000/api/getsiswa").then((res) => {
       this.siswa = res.data;
+      console.log(this.siswa)
     });
   },
   methods: {

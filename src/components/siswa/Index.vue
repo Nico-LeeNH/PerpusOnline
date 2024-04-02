@@ -52,8 +52,7 @@
                               :to="{
                                 name: 'Detail',
                                 params: { id: s.id_siswa },
-                              }"
-                            >
+                              }">
                               detail
                             </router-link>
                             <router-link

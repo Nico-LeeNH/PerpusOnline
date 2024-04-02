@@ -84,13 +84,13 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
     name: 'EditKu',
     data(){
         return{
             siswa:{},
-            kelas:{}
+            kelas:{},
         }
     },
     created(){
@@ -99,7 +99,7 @@ export default {
                       this.siswa = res.data
                   })
                   .catch(err => console.log(err));
-axios.get('http://localhost:8000/api/getkelas')
+            axios.get(`http://localhost:8000/api/getkelas`)
                   .then( res => {
                       this.kelas = res.data
                   })

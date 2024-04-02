@@ -23,10 +23,10 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <router-link to="/buku" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Buku</p>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

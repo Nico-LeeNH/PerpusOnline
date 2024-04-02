@@ -5,6 +5,8 @@ import Index from '../components/siswa/Index.vue'
 import Tambah from '../components/siswa/Tambah.vue'
 import Edit from '../components/siswa/Edit.vue'
 import Detail from '../components/siswa/Detail.vue'
+import indexb from '../components/buku/indexb.vue'
+import tambahB from '../components/buku/tambahB.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ const routes = [
     path: '/siswa/detail/:id',
     name: 'Detail',
     component: Detail
+  },
+  {
+    path: '/buku',
+    name: 'indexB',
+    component: indexb
+  },
+  {
+    path: '/buku/tambah',
+    name: 'tambahB',
+    component: tambahB
   },
   
 ]

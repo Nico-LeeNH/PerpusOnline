@@ -25,7 +25,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Judul</label>
-                                            <input type="text" class="form-control" v-model="buku.judul">
+                                            <input type="text" class="form-control" v-model="buku.nama_buku">
                                         </div>                                        
                                         <div class="form-group">
                                             <label>Pengarang</label>
@@ -50,17 +50,18 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 export default {
-    name:'tambahBuku',
+    name:'tambahB',
     data(){
         return{
             buku:{}
         }
     },
+    
     methods:{
         tambah() {
-            axios.post('http://localhost:8000/api/buku', this.buku)
+            axios.post('http://localhost:8000/api/addbuku', this.buku)
                       .then( () => {
                           this.$router.push('/buku');
                       })

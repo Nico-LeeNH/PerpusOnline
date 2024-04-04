@@ -107,10 +107,9 @@ export default {
     },
     methods:{
         edit() {
-            axios.patch(`http://localhost:8000/api/updatesiswa/${this.$route.params.id}`, this.siswa)
+            this.axios.patch('http://localhost:8000/api/update/${this.$route.params.id}', this.buku,  { headers: { 'Authorization': `Bearer ` + this.$store.state.token } })
                       .then( () => {
-                        console.log(this.siswa);
-                          this.$router.push('/siswa');
+                          this.$router.push('/buku');
                       })
                       .catch( err => console.log(err))
         }

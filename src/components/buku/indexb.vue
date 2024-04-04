@@ -43,7 +43,7 @@
                                                         <router-link class="btn btn-success"
                                                             :to="{ name: 'detailbuku', params: { id: b.id_buku } }">Detail</router-link>
                                                         <router-link class="btn btn-warning"
-                                                            :to="{ name: 'editbuku', params: { id: b.id_buku } }">Edit</router-link>
+                                                            :to="{ name: 'edit', params: { id: b.id_buku } }">Edit</router-link>
                                                         <button type="button" @click="hapus(b.id_buku)"
                                                             class="btn btn-danger">Hapus</button>
                                                     </div>

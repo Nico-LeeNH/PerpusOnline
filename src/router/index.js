@@ -7,6 +7,7 @@ import Edit from '../components/siswa/Edit.vue'
 import Detail from '../components/siswa/Detail.vue'
 import indexb from '../components/buku/indexb.vue'
 import tambahB from '../components/buku/tambahB.vue'
+import edit from '../components/buku/edit.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/buku/tambah',
     name: 'tambahB',
     component: tambahB
+  },
+  {
+    path: '/buku/edit/:id',
+    name: 'edit',
+    component: edit
   },
   
 ]

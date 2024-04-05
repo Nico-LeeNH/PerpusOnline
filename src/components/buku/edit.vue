@@ -59,7 +59,7 @@ data(){
     }
 },
 created(){
-    this.axios.get('http://localhost:8000/api/getbuku/${this.$route.params.id}')
+    axios.get('http://localhost:8000/api/getbukuid/${this.$route.params.id}')
                   .then((res) => {
                       this.buku = res.data
                   })
@@ -67,7 +67,7 @@ created(){
 },
 methods:{
     edit() {
-            axios.patch(`http://localhost:8000/api/update/${this.$route.params.id}`, this.buku)
+            axios.patch('http://localhost:8000/api/update/${this.$route.params.id}', this.buku, { headers: { 'Authorization': `Bearer ` + this.$store.state.token } })
                       .then( () => {
                         console.log(this.buku);
                           this.$router.push('/buku');

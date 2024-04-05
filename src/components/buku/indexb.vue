@@ -41,7 +41,7 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         <router-link class="btn btn-success"
-                                                            :to="{ name: 'detailbuku', params: { id: b.id_buku } }">Detail</router-link>
+                                                            :to="{ name: 'detail', params: { id: b.id_buku } }">Detail</router-link>
                                                         <router-link class="btn btn-warning"
                                                             :to="{ name: 'edit', params: { id: b.id_buku } }">Edit</router-link>
                                                         <button type="button" @click="hapus(b.id_buku)"

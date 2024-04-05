@@ -107,7 +107,7 @@ export default {
     },
     methods:{
         edit() {
-            this.axios.patch('http://localhost:8000/api/update/${this.$route.params.id}', this.buku,  { headers: { 'Authorization': `Bearer ` + this.$store.state.token } })
+            this.axios.patch('http://localhost:8000/api/updatesiswa/${this.$route.params.id}', this.buku,  { headers: { 'Authorization': `Bearer ` + this.$store.state.token } })
                       .then( () => {
                           this.$router.push('/buku');
                       })

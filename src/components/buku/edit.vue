@@ -61,18 +61,19 @@ data(){
 created(){
     axios.get(`http://localhost:8000/api/getbukuid/${this.$route.params.id}`)
                   .then((res) => {
-                      this.buku = res.data
+                      this.buku = res.data;
+                      console.log(res);
                   })
-                  .catch(err => console.log(err));
+                  .catch((err) => console.log(err));
 },
 methods:{
     edit() {
-            this.axios.patch(`http://localhost:8000/api/update/${this.$route.params.id}`, this.buku,  { headers: { 'Authorization': `Bearer ` + this.$store.state.token } })
-                      .then( () => {
-                          this.$router.push('/buku');
+            axios.put(`http://localhost:8000/api/update/${this.$route.params.id}`, this.buku)                      
+            .then( () => {
+                          this.$router.push("/buku");
                       })
-                      .catch( err => console.log(err))
-        }
+                      .catch( (err) => console.log(err));
+        },
 }
 }
 </script>

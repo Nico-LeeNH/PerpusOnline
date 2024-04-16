@@ -10,6 +10,7 @@ import tambahB from '../components/buku/tambahB.vue'
 import edit from '../components/buku/edit.vue'
 import detail from '../components/buku/detail.vue'
 import login from '../components/login.vue'
+import indexP from '../components/peminjaman/indexP.vue'
 
 Vue.use(VueRouter)
 
@@ -63,6 +64,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  },
+  {
+    path: '/index',
+    name: 'indexP',
+    component: indexP
   },
   
 ]

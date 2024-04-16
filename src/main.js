@@ -19,5 +19,6 @@ new Vue({
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(require('vue-moment'));
 
 Vue.prototype.$axios = axios

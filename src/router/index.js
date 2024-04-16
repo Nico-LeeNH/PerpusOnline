@@ -9,6 +9,7 @@ import indexb from '../components/buku/indexb.vue'
 import tambahB from '../components/buku/tambahB.vue'
 import edit from '../components/buku/edit.vue'
 import detail from '../components/buku/detail.vue'
+import login from '../components/login.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
     path: '/buku/detail/:id',
     name: 'detail',
     component: detail
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
   },
   
 ]

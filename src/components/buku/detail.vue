@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="card-body text-justify">
                                     <h6>Nama Buku</h6>
-                                    <p class="mb-3">{{buku.nama_buku}}</p>
+                                    <p class="cart-text">{{buku.nama_buku}}</p>
 
                                     <h6>Pengarang</h6>
                                     <p class="card-text">{{buku.pengarang}}</p>
@@ -30,7 +30,7 @@
                                     <h6>Deskripsi</h6>
                                     <p class="card-text">{{buku.deskripsi}}</p>
 
-                                    <router-link class="btn btn-primary" to="/siswa">Kembali</router-link>
+                                    <router-link class="btn btn-primary" to="/buku">Kembali</router-link>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 export default {
     name:'detailB',
     data(){
@@ -51,10 +51,10 @@ export default {
         }
     },
     created(){
-        axios.get('http://localhost:8000/api/getbukuid/${this.$route.params.id}')
+        axios.get(`http://localhost:8000/api/getbukuid/${this.$route.params.id}`)
                   .then(res => {
                       this.buku = res.data
-                      console.log(this.siswa)
+                      console.log(this.buku)
                   })
                   .catch(err => console.log(err))
     }

@@ -12,6 +12,7 @@ import detail from '../components/buku/detail.vue'
 import login from '../components/login.vue'
 import indexP from '../components/peminjaman/indexP.vue'
 import TambahPinjam from '../components/peminjaman/TambahPinjam.vue'
+import EditPinjam from '../components/peminjaman/EditPinjam.vue'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,11 @@ const routes = [
     path: '/pinjam/tambah',
     name: 'TambahPinjam',
     component: TambahPinjam
+  },
+  {
+    path: '/pinjam/edit/:id',
+    name: 'EditPinjam',
+    component: EditPinjam
   },
   
 ]

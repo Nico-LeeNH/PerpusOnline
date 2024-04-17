@@ -7,7 +7,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Form Tambah Data</h1>
+                            <h1 class="m-0">Form Edit Data</h1>
                         </div>          
                     </div>
                 </div>
@@ -19,9 +19,9 @@
                         <div class="col-md-6">
                             <div class="card card-warning">
                                 <div class="card-header">
-                                    <h3 class="card-title">Peminjaman Baru</h3>
+                                    <h3 class="card-title">Edit Peminjaman</h3>
                                 </div>
-                                <form @submit.prevent="tambah">
+                                <form @submit.prevent="edit">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <select class="form-control" v-model="pinjam.id_siswa">
@@ -30,11 +30,11 @@
                                         </div>                                        
                                         <div class="form-group">
                                             <label>Tanggal Pinjam</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_pinjam"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tgl_pinjam"></b-form-datepicker>
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal Kembali</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_kembali"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tgl_kembali"></b-form-datepicker>
                                         </div>                                        
                                     </div>
                                     <div class="card-footer">
@@ -51,12 +51,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
-    name:'TambahP',
+    name:'EditP',
     data(){
-        return{
-            pinjam:{},
+        return {
+            pinjam :{},
             siswa:{}
         }
     },
@@ -65,16 +65,20 @@ export default {
                   .then(res => {
                       this.siswa = res.data
                   })
-                  .catch((err) => console.log(err));
+                  .catch(err => console.log(err));
+        axios.get(`http://localhost:8000/api/getpinjam/${this.$route.params.id}`)
+                  .then(res => {
+                      this.pinjam = res.data
+                  })
+                  .catch(err => console.log(err));
     },
     methods:{
-        tambah() {
-            axios.post(`http://localhost:8000/api/pinjambuku`, this.pinjam
-)
+        edit() {
+            axios.put(`http://localhost:8000/api/pinjam/${this.$route.params.id}`, this.pinjam)
                       .then( () => {
-                          this.$router.push('/pinjam');
+                          this.$router.push('/pinjam')
                       })
-                      .catch( (err) => console.log(err))
+                      .catch(err => console.log(err));
         }
     }
 }

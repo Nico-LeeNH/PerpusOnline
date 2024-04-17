@@ -11,6 +11,7 @@ import edit from '../components/buku/edit.vue'
 import detail from '../components/buku/detail.vue'
 import login from '../components/login.vue'
 import indexP from '../components/peminjaman/indexP.vue'
+import TambahPinjam from '../components/peminjaman/TambahPinjam.vue'
 
 Vue.use(VueRouter)
 
@@ -66,9 +67,14 @@ const routes = [
     component: login
   },
   {
-    path: '/index',
+    path: '/pinjam',
     name: 'indexP',
     component: indexP
+  },
+  {
+    path: '/pinjam/tambah',
+    name: 'TambahPinjam',
+    component: TambahPinjam
   },
   
 ]

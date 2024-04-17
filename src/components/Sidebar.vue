@@ -38,10 +38,10 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <router-link to="/pinjam"  href="#" class="nav-link">
                                 <i class="fas fa-file-export nav-icon"></i>
                                 <p>Peminjaman</p>
-                            </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

@@ -19,14 +19,15 @@
                         <div class="col-md-10">
                             <div class="card card-primary card-outline">
                                 <div class="card-body">
-                                    <router-link class="btn btn-info mb-2" to="">
+                                    <router-link class="btn btn-info mb-2" to="/pinjam/tambah">
                                         <i class="fas fa-plus"></i> Tambah
                                     </router-link>
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">#</th>
-                                                <th>Nama Siswa</th>
+                                                <th>Id Pinjam Buku</th>
+                                                <th>Id Siswa</th>
                                                 <th>Tanggal Pinjam</th>
                                                 <th>Tanggal Kembali</th>
                                                 <th>Status</th>
@@ -36,9 +37,10 @@
                                         <tbody>
                                             <tr v-for="(p, index) in pinjam" :key="index">
                                                 <td>{{ index + 1 }}</td>
-                                                <td>{{ p.nama_siswa }}</td>
-                                                <td>{{ p.tgl_pinjam | moment("DD/MM/YYYY") }}</td>
-                                                <td>{{ p.tgl_kembali | moment("DD/MM/YYYY") }}</td>
+                                                <td>{{ p.id_peminjaman_buku }}</td>
+                                                <td>{{ p.id_siswa }}</td>
+                                                <td>{{ p.tanggal_pinjam | moment("DD/MM/YYYY") }}</td>
+                                                <td>{{ p.tanggal_kembali | moment("DD/MM/YYYY") }}</td>
                                                 <td>
                                                     <span v-if="p.status == 1" class="badge bg-success">Kembali</span>
                                                     <span v-else class="badge bg-danger">Belum kembali</span>
@@ -73,14 +75,14 @@ export default {
         }
     },
     created(){
-        axios.get('http://localhost:8000/api/pinjambuku')
+        axios.get('http://localhost:8000/api/getpinjam')
                   .then( res => {
                       this.pinjam = res.data
                   })
     },
     methods:{
         hapus(id) {
-            this.axios.delete(`http://localhost:8000/api/pinjambuku/${id}`)
+            axios.delete(`http://localhost:8000/api/delete/${id}`)
                       .then( () => {
                           let i = this.pinjam.map(item => item.id).indexOf(id);
                           this.pinjam.splice(i, 1);

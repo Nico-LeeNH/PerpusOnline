@@ -23,18 +23,14 @@
                                 </div>
                                 <form @submit.prevent="edit">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <select class="form-control" v-model="pinjam.id_siswa">
-                                                <option v-for="(s, index) in siswa" :key="index" :value="s.id">{{s.nama_siswa}}</option>
-                                            </select>                                            
-                                        </div>                                        
+                                                                           
                                         <div class="form-group">
                                             <label>Tanggal Pinjam</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tgl_pinjam"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_pinjam"></b-form-datepicker>
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal Kembali</label>
-                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tgl_kembali"></b-form-datepicker>
+                                            <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_kembali"></b-form-datepicker>
                                         </div>                                        
                                     </div>
                                     <div class="card-footer">
@@ -65,7 +61,7 @@ export default {
                   .then(res => {
                       this.siswa = res.data
                   })
-                  .catch(err => console.log(err));
+                  .catch((err) => console.log(err));
         axios.get(`http://localhost:8000/api/getpinjam/${this.$route.params.id}`)
                   .then(res => {
                       this.pinjam = res.data
@@ -74,7 +70,7 @@ export default {
     },
     methods:{
         edit() {
-            axios.put(`http://localhost:8000/api/pinjam/${this.$route.params.id}`, this.pinjam)
+            axios.put(`http://localhost:8000/api/updatepinjam/${this.$route.params.id}`, this.pinjam)
                       .then( () => {
                           this.$router.push('/pinjam')
                       })

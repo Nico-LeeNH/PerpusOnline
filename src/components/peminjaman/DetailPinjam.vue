@@ -65,7 +65,7 @@ export default {
         }
     },
     created() {        
-        this.axios.get(`http://localhost:8000/api/getbukuid/${this.$route.params.id}`)
+        this.axios.get(`http://localhost:8000/api/getpinjam/${this.$route.params.id}`)
                   .then(res => {
                       this.databuku = res.data
                   })

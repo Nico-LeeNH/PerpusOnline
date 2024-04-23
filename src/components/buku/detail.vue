@@ -1,7 +1,5 @@
 <template>
   <div>
-        <navbar-component></navbar-component>
-        <sidebar-component></sidebar-component>
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">

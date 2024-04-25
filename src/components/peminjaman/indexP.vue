@@ -26,8 +26,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">#</th>
-                                                <th>Id Pinjam Buku</th>
-                                                <th>Id Siswa</th>
+                                                <th>Nama Siswa</th>
                                                 <th>Tanggal Pinjam</th>
                                                 <th>Tanggal Kembali</th>
                                                 <th>Status</th>
@@ -37,8 +36,7 @@
                                         <tbody>
                                             <tr v-for="(p, index) in pinjam" :key="index">
                                                 <td>{{ index + 1 }}</td>
-                                                <td>{{ p.id_peminjaman_buku }}</td>
-                                                <td>{{ p.id_siswa }}</td>
+                                                <td>{{ p.nama_siswa }}</td>
                                                 <td>{{ p.tanggal_pinjam | moment("DD/MM/YYYY") }}</td>
                                                 <td>{{ p.tanggal_kembali | moment("DD/MM/YYYY") }}</td>
                                                 <td>
@@ -79,6 +77,11 @@ export default {
                   .then( res => {
                       this.pinjam = res.data
                   })
+                  axios.get(`http://localhost:8000/api/getsiswaid/${this.$route.params.id}`)
+                 .then((res) => {
+                      this.siswa = res.data
+                  })
+                  .catch(err => console.log(err));
     },
     methods:{
         hapus(id) {

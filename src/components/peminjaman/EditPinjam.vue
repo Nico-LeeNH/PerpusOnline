@@ -23,7 +23,12 @@
                                 </div>
                                 <form @submit.prevent="edit">
                                     <div class="card-body">
-                                                                           
+                                        <div class="form-group">
+                                            <label>Nama siswa</label>
+                                            <select class="form-control" v-model="pinjam.id_siswa">                                                   
+                                                <option v-for="k in siswa" :key="k.id_siswa" :value="k.id_siswa" >{{ k.nama_siswa }}</option>
+                                            </select>
+                                        </div>                                  
                                         <div class="form-group">
                                             <label>Tanggal Pinjam</label>
                                             <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_pinjam"></b-form-datepicker>

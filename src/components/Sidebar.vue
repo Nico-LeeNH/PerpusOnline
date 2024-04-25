@@ -44,7 +44,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/kembali" class="nav-link">
                                 <i class="fas fa-file-import nav-icon"></i>
                                 <p>Pengembalian</p>
                             </a>

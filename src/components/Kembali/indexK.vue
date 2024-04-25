@@ -56,7 +56,7 @@ export default {
         }
     },
     created(){
-        this.axios.get('http://localhost:8000/api/kembali')
+        this.axios.get('http://localhost:8000/api/kembalibuku')
                   .then( res => {
                       this.kembali = res.data
                   })

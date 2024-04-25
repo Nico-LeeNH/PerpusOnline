@@ -15,6 +15,7 @@ import TambahPinjam from '../components/peminjaman/TambahPinjam.vue'
 import EditPinjam from '../components/peminjaman/EditPinjam.vue'
 import DetailPinjam from '../components/peminjaman/DetailPinjam.vue'
 import TambahDetail from '../components/peminjaman/TambahDetail.vue'
+import indexK from '../components/Kembali/indexK.vue'
 
 Vue.use(VueRouter)
 
@@ -94,6 +95,11 @@ const routes = [
     name: 'TambahDetail',
     component: TambahDetail
   },
+  {
+    path: '/kembali',
+    name: 'indexK',
+    component: indexK
+  }
   
 ]
 

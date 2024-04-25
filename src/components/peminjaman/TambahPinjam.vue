@@ -24,10 +24,14 @@
                                 <form @submit.prevent="tambah">
                                     <div class="card-body">
                                         <div class="form-group">
+                                            <label>id_siswa</label>
+                                            <input type="text" class="form-control" v-model="pinjam.id_siswa">
+                                        </div>
+                                        <!-- <div class="form-group">
                                             <select class="form-control" v-model="pinjam.id_siswa">
                                                 <option v-for="(s, index) in siswa" :key="index" :value="s.id">{{s.nama_siswa}}</option>
                                             </select>                                            
-                                        </div>                                        
+                                        </div>                                         -->
                                         <div class="form-group">
                                             <label>Tanggal Pinjam</label>
                                             <b-form-datepicker id="example-datepicker" class="mb-2" v-model="pinjam.tanggal_pinjam"></b-form-datepicker>
